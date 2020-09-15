@@ -29,26 +29,6 @@ namespace DesafioApi1.Host
         {
             services.AddHealthChecks();
             services.AddControllers();
-
-           
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DesafioApi1", Version = "v1", });
-
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-
-                c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
-            });
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
